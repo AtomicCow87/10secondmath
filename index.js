@@ -2,6 +2,12 @@ $(document).ready(function(){
   var currentQuestion;
   var timeLeft = 10;
   var interval;
+  var score = 0;
+
+  var updateTimeLeft = function (amount) {
+    timeLeft += amount;
+    $('#time-left').text(timeLeft);
+  };
 
   var randomNumberGenerator = function (size) {
     return Math.ceil(Math.random() * size);
@@ -35,28 +41,41 @@ $(document).ready(function(){
     checkAnswer(Number($(this).val()), currentQuestion.answer);
   });
 
+  var updateScore = function (amount) {
+    score += amount;
+    $('#score').text(score);
+  };
+
+  var checkAnswer = function (userInput, answer) {
+    if (userInput === answer) {
+      renderNewQuestion();
+      $('#user-input').val('');
+      updateTimeLeft(+1);
+      updateScore(+1);
+    }
+  };
+
   var startGame = function () {
     if (!interval) {
       if (timeLeft === 0) {
         updateTimeLeft(10);
-      };
+        // Add the following
+        updateScore(-score);
+      }
       interval = setInterval(function () {
         updateTimeLeft(-1);
         if (timeLeft === 0) {
           clearInterval(interval);
           interval = undefined;
-        };
+        }
       }, 1000);  
-    };
+    }
   };
 
-  var updateTimeLeft = function (amount) {
-    timeLeft += amount;
-    $('#time-left').text(timeLeft);
-  };
-  
   $('#user-input').on('keyup', function () {
     startGame(); 
     checkAnswer(Number($(this).val()), currentQuestion.answer);
   });
+
+  renderNewQuestion();
 });
