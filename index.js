@@ -1,7 +1,7 @@
 $(document).ready(function(){
   var randomNumberGenerator = function (size) {
     return Math.ceil(Math.random() * size);
-  }
+  };
 
   var questionGenerator = function () {
     var question = {};
@@ -12,18 +12,19 @@ $(document).ready(function(){
     question.equation = String(num1) + " + " + String(num2);
     
     return question;
-  }
+  };
 
   var renderNewQuestion = function () {
     currentQuestion = questionGenerator();
     $('#equation').text(currentQuestion.equation);  
-  }
+  };
   
   var checkAnswer = function (userInput, answer) {
     if(userInput === answer) {
       renderNewQuestion();
-    }
-  }
+      $('#user-input').val('');
+    };
+  };
   
   $('#user-input').on('keyup', function () {
     checkAnswer(Number($(this).val()), currentQuestion.answer);
