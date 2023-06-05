@@ -1,0 +1,23 @@
+#number-limit {
+  max-width: 200px;
+  margin: 0 auto;
+}
+body {
+  background-color: rgb(53, 53, 53);
+  color:azure;
+}
+h1 {
+  color: rgb(81, 149, 228);
+}
+#equation {
+  color: springgreen;
+}
+#time-left {
+  color:rgb(231, 95, 95);
+}
+#score {
+  color: rgb(81, 149, 228);
+}
+#highscore {
+  color:gold;
+}

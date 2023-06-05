@@ -12,14 +12,27 @@
   <body>
     <div class="container">
       <div class="row">
-        <div class="col-xs-12">
-          <h2>10 Sec Maths Game</h2>
-          <h3 id="time-left">10</h3>
-          <p>second left</p>
+        <div class="col-xs-12 text-center">
+          <h1>10 Sec Maths Game</h1>
+          <h2 id="time-left">10</h2>
+          <p>second(s) left</p>
           <h1 id="equation"></h1>
           <input id="user-input" type="number" />
           <h4>Score: <span id="score"></span></h4>
+          <h4>Highscore: <span id="highscore"></span></h4>
         </div>
+        <div class="col-xs-12 text-center">
+          <h1>Options</h1>
+          <h4>Operator Choice(s)</h4>
+          <input id="question-add" type="checkbox" value="true" /> <b>+</b> 
+          <input id="question-sub" type="checkbox" value="false" /> <b>-</b> 
+          <input id="question-mul" type="checkbox" value="false" /> <b>*</b> 
+          <input id="question-div" type="checkbox" value="false" /> <b>/</b>
+          <br />
+          <h4>Number Range</h4>
+          <h4 class="limit-display">10</h4>
+          <input id="number-limit" type="range" min="10" max="50" step="5" /> 
+        </div>       
       </div>
     </div>
   </body>
