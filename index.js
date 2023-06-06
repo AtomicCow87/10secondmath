@@ -30,6 +30,30 @@ $(document).ready(function(){
       }, 1000);  
     }
   };
+
+  var checkOperators = function () {
+    if ($('#question-add').prop('checked') == true) {
+      operators.push({
+        sign: "+",
+        method: function (a, b) { return a + b; }
+      });
+    } if ($('#question-sub').prop('checked') == true) {
+      operators.push({
+        sign: "-",
+        method: function (a, b) { return a - b; }
+      });
+    } if ($('#question-mul').prop('checked') == true) {
+      operators.push({
+        sign: "*",
+        method: function (a, b) { return a * b; }
+      });
+    } if ($('#question-div').prop('checked') == true) {
+      operators.push({
+        sign: "/",
+        method: function (a, b) { return a / b; }
+      });
+    }
+  };
   
   var randomNumberGenerator = function (size) {
     return Math.ceil(Math.random() * size);
@@ -66,30 +90,6 @@ $(document).ready(function(){
     startGame();
     checkAnswer(Number($(this).val()), currentQuestion.answer);
   });
-
-  var checkOperators = function () {
-    if ($('#question-add').prop('checked') == true) {
-      operators.push({
-        sign: "+",
-        method: function (a, b) { return a + b; }
-      });
-    } if ($('#question-sub').prop('checked') == true) {
-      operators.push({
-        sign: "-",
-        method: function (a, b) { return a - b; }
-      });
-    } if ($('#question-mul').prop('checked') == true) {
-      operators.push({
-        sign: "*",
-        method: function (a, b) { return a * b; }
-      });
-    } if ($('#question-div').prop('checked') == true) {
-      operators.push({
-        sign: "/",
-        method: function (a, b) { return a / b; }
-      });
-    }
-  };
 
   renderNewQuestion();
 });
