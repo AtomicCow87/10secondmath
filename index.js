@@ -4,6 +4,7 @@ $(document).ready(function(){
   var timeLeft = 10;
   var score = 0;
   var operators = [];
+  var highscore = 0;
   
   var updateTimeLeft = function (amount) {
     timeLeft += amount;
@@ -19,6 +20,7 @@ $(document).ready(function(){
     if (!interval) {
       if (timeLeft === 0) {
         updateTimeLeft(10);
+        highscoreCheck(score);
         updateScore(-score);
       }
       interval = setInterval(function () {
@@ -30,6 +32,17 @@ $(document).ready(function(){
       }, 1000);  
     }
   };
+
+  var highscoreCheck = function (amount) {
+    var newHigh = amount;
+
+    if (newHigh > highscore) {
+      highscore = newHigh;
+      $('#highscore').text(highscore);
+    } else {
+      $('#highscore').text(highscore);
+    }
+  }
 
   var checkOperators = function () {
     if ($('#question-add').prop('checked') == true) {
@@ -73,6 +86,7 @@ $(document).ready(function(){
   
   var renderNewQuestion = function () {
     checkOperators();
+    highscoreCheck(highscore);
     currentQuestion = questionGenerator();
     $('#equation').text(currentQuestion.equation);  
   };
