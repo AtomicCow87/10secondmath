@@ -99,11 +99,20 @@ $(document).ready(function(){
       updateScore(+1);
     }
   };
+
+  var clearOperators = function () {
+    operators = [];
+  }
   
   $('#user-input').on('keyup', function () {
     startGame();
     checkAnswer(Number($(this).val()), currentQuestion.answer);
   });
+
+  $('.operator').change(function () {
+    clearOperators();
+    renderNewQuestion();
+  })
 
   renderNewQuestion();
 });
