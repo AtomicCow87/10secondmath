@@ -77,6 +77,29 @@ $(document).ready(function(){
     var num1 = randomNumberGenerator(10);
     var num2 = randomNumberGenerator(10);
     var selectedOperator = Math.floor(Math.random() * operators.length);
+
+    if (operators[selectedOperator].sign == "/") {
+      if (num1 < num2) {
+        var temp = num1;
+        num1 = num2;
+        num2 = temp;
+      }
+
+      var tempEquation = operators[selectedOperator].method(num1, num2);
+      
+      question.answer = Math.floor(tempEquation);
+      question.equation = String(num1) + String(operators[selectedOperator].sign) + String(num2);
+
+      return question;
+    }
+    
+    if (operators[selectedOperator].sign == "-") {
+      if (num1 < num2) {
+        var temp = num1;
+        num1 = num2;
+        num2 = temp;
+      }
+    }
     
     question.answer = operators[selectedOperator].method(num1, num2);
     question.equation = String(num1) + String(operators[selectedOperator].sign) + String(num2);
