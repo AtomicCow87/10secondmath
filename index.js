@@ -79,16 +79,10 @@ $(document).ready(function(){
     var selectedOperator = Math.floor(Math.random() * operators.length);
 
     if (operators[selectedOperator].sign == "/") {
-      if (num1 < num2) {
-        var temp = num1;
-        num1 = num2;
-        num2 = temp;
-      }
-
-      var tempEquation = operators[selectedOperator].method(num1, num2);
+      var num3 = num1 * num2; 
       
-      question.answer = Math.floor(tempEquation);
-      question.equation = String(num1) + String(operators[selectedOperator].sign) + String(num2);
+      question.answer = operators[selectedOperator].method(num3, num1);
+      question.equation = String(num3) + String(operators[selectedOperator].sign) + String(num1);
 
       return question;
     }
